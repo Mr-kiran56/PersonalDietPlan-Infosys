@@ -86,7 +86,7 @@ def assign_single_label(row):
     return 0
 
 
-def Preprocess_data(df:pd.DataFrame):
+def Preprocess_data(df:pd.DataFrame,assign_single_label):
     df=df.drop(columns=["Blood Group","Unnamed: 0","Name"],inplace=True)
     df['label'] = df.apply(assign_single_label, axis=1)  
 
@@ -128,7 +128,8 @@ def main(filename):
         logger.debug("Starting data preprocessing...")
         data=pd.read_csv(filename)
         data_F=pd.DataFrame(data)
-        df=Preprocess_data(data_F)
+        assign_single=assign_single_label()
+        df=Preprocess_data(data_F,assign_single)
         train_processed_data, test_processed_data=train_test_split(df,test_size=test_size,random_state=42)
         save_data(train_processed_data, test_processed_data, data_path='./dataFinal')
     except Exception as e:
