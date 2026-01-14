@@ -8,7 +8,7 @@ from sklearn.preprocessing import LabelEncoder,OrdinalEncoder
 from sklearn.model_selection import train_test_split
 
 # logging configuration
-logger = logging.getLogger('data_preprocessing')
+logger = logging.getLogger('dataPreprocess')
 logger.setLevel('DEBUG')
 
 console_handler = logging.StreamHandler()
